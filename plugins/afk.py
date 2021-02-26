@@ -1,12 +1,6 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
+# king
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}afk <optional reason>`
     afk means away from keyboard,
@@ -38,8 +32,8 @@ afk_start = {}
 LOG = Var.LOG_CHANNEL
 
 
-@ultroid_bot.on(events.NewMessage(outgoing=True))
-@ultroid_bot.on(events.MessageEdited(outgoing=True))
+@KINGBOT_bot.on(events.NewMessage(outgoing=True))
+@KINGBOT_bot.on(events.MessageEdited(outgoing=True))
 async def set_not_afk(event):
     global USER_AFK
     global afk_time
@@ -54,26 +48,26 @@ async def set_not_afk(event):
     if "afk" not in current_message and "yes" in USER_AFK:
         try:
             if pic.endswith((".tgs", ".webp")):
-                shite = await ultroid_bot.send_message(event.chat_id, file=pic)
-                shites = await ultroid_bot.send_message(
+                shite = await KINGBOT_bot.send_message(event.chat_id, file=pic)
+                shites = await KINGBOT_bot.send_message(
                     event.chat_id,
                     "`No Longer Afk`\n\nWas afk for~ " + total_afk_time + "`",
                 )
             else:
-                shite = await ultroid_bot.send_message(
+                shite = await KINGBOT_bot.send_message(
                     event.chat_id,
                     "`No Longer Afk`\n\nWas afk for~ " + total_afk_time + "`",
                     file=pic,
                 )
         except BaseException:
-            shite = await ultroid_bot.send_message(
+            shite = await KINGBOT_bot.send_message(
                 event.chat_id, "`No Longer Afk \nWas afk for " + total_afk_time + "`"
             )
         try:
             try:
                 if pic.endswith((".tgs", ".webp")):
-                    await ultroid_bot.send_message(LOG, file=pic)
-                    await ultroid_bot.send_message(
+                    await KINGBOT_bot.send_message(LOG, file=pic)
+                    await KINGBOT_bot.send_message(
                         LOG,
                         "#AFKFALSE \nSet AFK mode to False\n"
                         + "Back alive!\nNo Longer afk.\n Was afk for`"
@@ -81,7 +75,7 @@ async def set_not_afk(event):
                         + "`",
                     )
                 else:
-                    await ultroid_bot.send_message(
+                    await KINGBOT_bot.send_message(
                         LOG,
                         "#AFKFALSE \nSet AFK mode to False\n"
                         + "Back alive!\nNo Longer afk.\n Was afk for`"
@@ -90,7 +84,7 @@ async def set_not_afk(event):
                         file=pic,
                     )
             except BaseException:
-                await ultroid_bot.send_message(
+                await KINGBOT_bot.send_message(
                     LOG,
                     "#AFKFALSE \nSet AFK mode to False\n"
                     + "Back alive!\nNo Longer afk.\n Was afk for`"
@@ -109,7 +103,7 @@ async def set_not_afk(event):
         afk_time = None
 
 
-@ultroid_bot.on(
+@KINGBOT_bot.on(
     events.NewMessage(incoming=True, func=lambda e: bool(e.mentioned or e.is_private))
 )
 async def on_afk(event):
@@ -161,7 +155,7 @@ async def on_afk(event):
             pass
 
 
-@ultroid_cmd(pattern=r"afk ?(.*)")
+@KINGBOT_cmd(pattern=r"afk ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -187,7 +181,7 @@ async def _(event):
     else:
         pic = None
     if not USER_AFK:
-        last_seen_status = await ultroid_bot(
+        last_seen_status = await KINGBOT_bot(
             functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
@@ -196,23 +190,23 @@ async def _(event):
         if reason:
             try:
                 if pic.endswith((".tgs", ".webp")):
-                    await ultroid_bot.send_message(event.chat_id, file=pic)
-                    await ultroid_bot.send_message(
+                    await KINGBOT_bot.send_message(event.chat_id, file=pic)
+                    await KINGBOT_bot.send_message(
                         event.chat_id, f"Afk __because ~ {reason}__"
                     )
                 else:
-                    await ultroid_bot.send_message(
+                    await KINGBOT_bot.send_message(
                         event.chat_id, f"Afk __because ~ {reason}__", file=pic
                     )
             except BaseException:
-                await ultroid_bot.send_message(
+                await KINGBOT_bot.send_message(
                     event.chat_id, f"Afk __because ~ {reason}__"
                 )
         else:
             try:
                 if pic.endswith((".tgs", ".webp")):
-                    await ultroid_bot.send_message(event.chat_id, file=pic)
-                    await ultroid_bot.send_message(
+                    await KINGBOT_bot.send_message(event.chat_id, file=pic)
+                    await KINGBOT_bot.send_message(
                         event.chat_id, f"**I am Going afk!**"
                     )
                 else:
@@ -220,31 +214,31 @@ async def _(event):
                         event.chat_id, f"**I am Going afk!**", file=pic
                     )
             except BaseException:
-                await ultroid_bot.send_message(event.chat_id, f"**I am Going afk!**")
+                await KINGBOT_bot.send_message(event.chat_id, f"**I am Going afk!**")
         await event.delete()
         try:
             if reason and pic:
                 if pic.endswith((".tgs", ".webp")):
-                    await ultroid_bot.send_message(LOG, file=pic)
-                    await ultroid_bot.send_message(
+                    await KINGBOT_bot.send_message(LOG, file=pic)
+                    await KINGBOT_bot.send_message(
                         LOG, f"AFK mode to On and Reason is {reason}"
                     )
                 else:
-                    await ultroid_bot.send_message(
+                    await KINGBOT_bot.send_message(
                         LOG, f"AFK mode to On and Reason is {reason}", file=pic
                     )
             elif reason:
-                await ultroid_bot.send_message(
+                await KINGBOT_bot.send_message(
                     LOG, f"AFK mode to On and Reason is {reason}"
                 )
             elif pic:
                 if pic.endswith((".tgs", ".webp")):
-                    await ultroid_bot.send_message(LOG, file=pic)
-                    await ultroid_bot.send_message(LOG, f"AFK mode to On")
+                    await KINGBOT_bot.send_message(LOG, file=pic)
+                    await KINGBOT_bot.send_message(LOG, f"AFK mode to On")
                 else:
-                    await ultroid_bot.send_message(LOG, f"AFK mode to On", file=pic)
+                    await KINGBOT_bot.send_message(LOG, f"AFK mode to On", file=pic)
             else:
-                await ultroid_bot.send_message(LOG, f"AFK mode to On")
+                await KINGBOT_bot.send_message(LOG, f"AFK mode to On")
         except Exception as e:
             logger.warn(str(e))
 
