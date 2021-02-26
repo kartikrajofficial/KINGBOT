@@ -37,8 +37,8 @@ async def autopic(e):
     )
     while True:
         animepp(page["href"])
-        file = await ultroid_bot.upload_file("autopic.jpg")
-        await ultroid_bot(functions.photos.UploadProfilePhotoRequest(file))
+        file = await KINGBOT_bot.upload_file("autopic.jpg")
+        await KINGBOT_bot(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf autopic.jpg")
         await asyncio.sleep(1100)
 
