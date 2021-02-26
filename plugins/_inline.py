@@ -16,7 +16,7 @@ from . import *
 
 # ================================================#
 notmine = "This bot is for {}".format(OWNER_NAME)
-KINGBOT_PIC = ""
+KINGBOT_PIC = "https://telegra.ph/file/5bba42dacd463db433053.jpg"
 helps = """
 [KINGBOT Sᴜᴘᴘᴏʀᴛ](t.me/KINGBOTOFFICIALCHAT)
 
