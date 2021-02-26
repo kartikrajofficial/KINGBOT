@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 from telethon import custom, events
 from telethon.utils import get_display_name
@@ -11,7 +6,7 @@ from telethon.utils import get_display_name
 from . import *
 
 
-@ultroid_bot.on(
+@KINGBOT_bot.on(
     events.NewMessage(
         incoming=True,
         func=lambda e: (e.mentioned),
@@ -20,10 +15,10 @@ from . import *
 async def all_messages_catcher(e):
     if udB.get("TAG_LOG") is not None:
         NEEDTOLOG = int(udB.get("TAG_LOG"))
-        x = await ultroid_bot.get_entity(e.sender_id)
+        x = await KINGBOT_bot.get_entity(e.sender_id)
         if x.bot:
             return
-        y = await ultroid_bot.get_entity(e.chat_id)
+        y = await KINGBOT_bot.get_entity(e.chat_id)
         xx = f"[{get_display_name(x)}](tg://user?id={x.id})"
         yy = f"[{get_display_name(y)}](https://t.me/c/{y.id})"
         msg = f"https://t.me/c/{y.id}/{e.id}"
