@@ -1,6 +1,6 @@
-from pyUltroid.functions.asst_fns import *
+from pyKINGBOT.functions.asst_fns import *
 
 from .. import *
 
-OWNER_NAME = ultroid_bot.me.first_name
-OWNER_ID = ultroid_bot.me.id
+OWNER_NAME = KINGBOT_bot.me.first_name
+OWNER_ID = KINGBOT_bot.me.id
