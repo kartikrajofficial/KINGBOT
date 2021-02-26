@@ -1,12 +1,7 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}autopic <search query>`
     will change your profile pic at defined intervals.
@@ -26,7 +21,7 @@ from telethon import functions
 from . import *
 
 
-@ultroid_cmd(pattern="autopic ?(.*)")
+@KINGBOT_cmd(pattern="autopic ?(.*)")
 async def autopic(e):
     search = e.pattern_match.group(1)
     if not search:
