@@ -1,11 +1,6 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-from pyUltroid.dB.database import Var
+
+from pyKINGBOT.dB.database import Var
 from support import *
 from telethon.errors.rpcerrorlist import BotInlineDisabledError as dis
 from telethon.errors.rpcerrorlist import BotMethodInvalidError as bmi
@@ -14,7 +9,7 @@ from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
 from . import *
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="help ?(.*)",
 )
 async def ult(ult):
@@ -26,15 +21,15 @@ async def ult(ult):
                 output = "**Plugin** - `{}`\n".format(plug)
                 for i in HELP[plug]:
                     output += i
-                output += "\n© @TheUltroid"
+                output += "\n© @KINGBOTOFFICIAL"
                 await eor(ult, output)
             elif plug in CMD_HELP:
-                kk = f"Plugin Name-{plug}\n\n✘ Commands Available-\n\n"
+                kk = f"Plugin Name-{plug}\n\n Commands Available-\n\n"
                 kk += str(CMD_HELP[plug])
                 await eor(ult, kk)
             else:
                 try:
-                    x = f"Plugin Name-{plug}\n\n✘ Commands Available-\n\n"
+                    x = f"Plugin Name-{plug}\n\n Commands Available-\n\n"
                     for d in LIST[plug]:
                         x += Var.HNDLR + d
                         x += "\n"
@@ -45,7 +40,7 @@ async def ult(ult):
             await eor(ult, "Error 🤔 occured.")
     else:
         try:
-            results = await ultroid_bot.inline_query(tgbot, "ultd")
+            results = await KINGBOT_bot.inline_query(tgbot, "ultd")
         except rep:
             return await eor(
                 ult,
