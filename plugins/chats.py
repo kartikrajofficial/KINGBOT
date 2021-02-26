@@ -1,12 +1,7 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}delchat`
 	Delete the group this cmd is used in.
@@ -28,7 +23,7 @@ from telethon.tl import functions
 from . import *
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="delchat$",
     groups_only=True,
 )
@@ -43,7 +38,7 @@ async def _(e):
     await e.client.send_message(Var.LOG_CHANNEL, f"#Deleted\nDeleted {e.chat_id}")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="getlink$",
     groups_only=True,
 )
@@ -58,7 +53,7 @@ async def _(e):
     await eod(xx, f"Link:- {r.link}")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="create (b|g|c)(?: |$)(.*)",
 )
 async def _(e):
@@ -96,7 +91,7 @@ async def _(e):
             r = await e.client(
                 functions.channels.CreateChannelRequest(
                     title=group_name,
-                    about="Join @TeamUltroid",
+                    about="Join @KINGBOTOFFICIAL",
                     megagroup=False if type_of_group == "c" else True,
                 )
             )
