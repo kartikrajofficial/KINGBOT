@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
 ✘ Commands Available -
@@ -25,7 +20,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from . import *
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="addsudo ?(.*)",
 )
 async def _(ult):
@@ -36,7 +31,7 @@ async def _(ult):
         id = replied_to.sender.id
         user = await ult.client(GetFullUserRequest(int(id)))
         sed.append(id)
-        if id == ultroid_bot.me.id:
+        if id == KINGBOT_bot.me.id:
             return await ok.edit("You cant add yourself as Sudo User...")
         elif is_sudo(id):
             return await ok.edit(
@@ -97,7 +92,7 @@ async def _(ult):
         return await ok.edit(f"**Failed to add `{id}` as SUDO User ... **")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="delsudo ?(.*)",
 )
 async def _(ult):
@@ -169,7 +164,7 @@ async def _(ult):
         return await ok.edit(f"**Failed to Remove `{id}` as SUDO User ... **")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="listsudo$",
 )
 async def _(ult):
