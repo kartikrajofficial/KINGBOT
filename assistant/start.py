@@ -1,13 +1,7 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 from datetime import datetime
 
-from pyUltroid.functions.asst_fns import *
+from pyKINGBOT.functions.asst_fns import *
 from telethon import Button, custom, events
 
 from plugins import *
@@ -32,14 +26,14 @@ async def assistant(event):
         if event.is_private and event.sender_id in sed:
             return
         await event.reply(
-            f"Hey there, this is Ultroid Assistant of {OWNER_NAME}!\n\n{ok}",
-            buttons=[Button.url("Know More", url="https://t.me/TeamUltroid")],
+            f"Hey there, this is KINGBOT Assistant of {OWNER_NAME}!\n\n{ok}",
+            buttons=[Button.url("Know More", url="https://t.me/KINGBOTOFFICIAL")],
         )
 
 
 @asst_cmd("start")
 @owner
-async def ultroid(event):
+async def KINGBOT(event):
     if event.is_group:
         return
     await asst.send_message(
@@ -57,7 +51,7 @@ async def ultroid(event):
 @owner
 async def botstat(event):
     ok = len(get_all_users())
-    msg = """Ultroid Assistant - Stats
+    msg = """KINGBOT Assistant - Stats
 Total Users - {}""".format(
         ok
     )
