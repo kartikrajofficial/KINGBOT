@@ -1,9 +1,4 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 import os
 
@@ -13,7 +8,7 @@ from . import *
 
 # --------------------------------------------------------------------#
 telegraph = Telegraph()
-r = telegraph.create_account(short_name="Ultroid")
+r = telegraph.create_account(short_name="KINGBOT")
 auth_url = r["auth_url"]
 # --------------------------------------------------------------------#
 
@@ -91,7 +86,7 @@ async def dell(event):
         udB.delete("ALIVE_PIC")
         return await event.edit("Done!")
     except BaseException:
-        return await event.edit("Something went wrong...")
+        return await event.edit("Something w3nt wrong...")
 
 
 @callback("alvcstmm")
