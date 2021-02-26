@@ -1,12 +1,6 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
-✘ Commands Available -
+  Commands Available -
 
 • `{i}promote <reply to user/userid/username>`
     Promote the user in the chat.
@@ -56,7 +50,7 @@ from telethon.tl.types import ChatAdminRights, ChatBannedRights
 from . import *
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="promote ?(.*)",
     groups_only=True,
 )
@@ -74,7 +68,7 @@ async def prmte(ult):
     if not user:
         return await xx.edit("`Reply to a user to promote him!`")
     try:
-        await ultroid_bot(
+        await KINGBOT_bot(
             EditAdminRequest(
                 ult.chat_id,
                 user.id,
@@ -98,7 +92,7 @@ async def prmte(ult):
     await xx.delete()
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="demote ?(.*)",
     groups_only=True,
 )
@@ -116,7 +110,7 @@ async def dmote(ult):
     if not user:
         return await xx.edit("`Reply to a user to demote him!`")
     try:
-        await ultroid_bot(
+        await KINGBOT_bot(
             EditAdminRequest(
                 ult.chat_id,
                 user.id,
@@ -140,7 +134,7 @@ async def dmote(ult):
     await xx.delete()
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="ban ?(.*)",
     groups_only=True,
 )
@@ -156,7 +150,7 @@ async def bban(ult):
         return await xx.edit("`Reply to a user or give username to ban him!`")
     await xx.edit("`Getting user info...`")
     try:
-        await ultroid_bot(
+        await KINGBOT_bot(
             EditBannedRequest(
                 ult.chat_id,
                 user.id,
@@ -188,7 +182,7 @@ async def bban(ult):
         )
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="unban ?(.*)",
     groups_only=True,
 )
@@ -204,7 +198,7 @@ async def uunban(ult):
         return await xx.edit("`Reply to a user or give username to unban him!`")
     await xx.edit("`Getting user info...`")
     try:
-        await ultroid_bot(
+        await KINGBOT_bot(
             EditBannedRequest(
                 ult.chat_id,
                 user.id,
@@ -228,7 +222,7 @@ async def uunban(ult):
         )
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="kick ?(.*)",
     groups_only=True,
 )
@@ -244,7 +238,7 @@ async def kck(ult):
         return await xx.edit("`Kick? Whom? I couldn't get his info...`")
     await xx.edit("`Kicking...`")
     try:
-        await ultroid_bot.kick_participant(ult.chat_id, user.id)
+        await KINGBOT_bot.kick_participant(ult.chat_id, user.id)
         await asyncio.sleep(0.5)
     except BadRequestError:
         return await xx.edit("`I don't have the right to kick a user.`")
@@ -262,14 +256,14 @@ async def kck(ult):
         )
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="pin ?(.*)",
 )
 async def pin(msg):
     if not msg.is_private:
         # for pin(s) in private messages
         await msg.get_chat()
-    cht = await ultroid_bot.get_entity(msg.chat_id)
+    cht = await KINGBOT_bot.get_entity(msg.chat_id)
     xx = msg.reply_to_msg_id
     tt = msg.text
     try:
@@ -285,7 +279,7 @@ async def pin(msg):
         slnt = True
         x = await eor(msg, "`Processing...`")
         try:
-            await ultroid_bot.pin_message(msg.chat_id, xx, notify=slnt)
+            await KINGBOT_bot.pin_message(msg.chat_id, xx, notify=slnt)
         except BadRequestError:
             return await x.edit("`Hmm, I'm have no rights here...`")
         except Exception as e:
@@ -293,7 +287,7 @@ async def pin(msg):
         await x.edit(f"`Pinned` [this message](https://t.me/c/{cht.id}/{xx})!")
     else:
         try:
-            await ultroid_bot.pin_message(msg.chat_id, xx, notify=False)
+            await KINGBOT_bot.pin_message(msg.chat_id, xx, notify=False)
         except BadRequestError:
             return await eor(msg, "`Hmm, I'm have no rights here...`")
         except Exception as e:
@@ -304,7 +298,7 @@ async def pin(msg):
             pass
 
     
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="unpin($| (.*))",
 )
 async def unp(ult):
@@ -316,14 +310,14 @@ async def unp(ult):
     msg = ult.reply_to_msg_id
     if msg and not ch:
         try:
-            await ultroid_bot.unpin_message(ult.chat_id, msg)
+            await KINGBOT_bot.unpin_message(ult.chat_id, msg)
         except BadRequestError:
             return await xx.edit("`Hmm, I'm have no rights here...`")
         except Exception as e:
             return await xx.edit(f"**ERROR:**\n`{str(e)}`")
     elif ch == "all":
         try:
-            await ultroid_bot.unpin_message(ult.chat_id)
+            await KINGBOT_bot.unpin_message(ult.chat_id)
         except BadRequestError:
             return await xx.edit("`Hmm, I'm have no rights here...`")
         except Exception as e:
@@ -335,7 +329,7 @@ async def unp(ult):
     await xx.edit("`Unpinned!`")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="purge$",
 )
 async def fastpurger(purg):
@@ -344,17 +338,17 @@ async def fastpurger(purg):
     count = 0
     if not purg.reply_to_msg_id:
         return await eod(purg, "`Reply to a message to purge from.`", time=10)
-    async for msg in ultroid_bot.iter_messages(chat, min_id=purg.reply_to_msg_id):
+    async for msg in KINGBOT_bot.iter_messages(chat, min_id=purg.reply_to_msg_id):
         msgs.append(msg)
         count = count + 1
         msgs.append(purg.reply_to_msg_id)
         if len(msgs) == 100:
-            await ultroid_bot.delete_messages(chat, msgs)
+            await KINGBOT_bot.delete_messages(chat, msgs)
             msgs = []
 
     if msgs:
-        await ultroid_bot.delete_messages(chat, msgs)
-    done = await ultroid_bot.send_message(
+        await KINGBOT_bot.delete_messages(chat, msgs)
+    done = await KINGBOT_bot.send_message(
         purg.chat_id,
         "__Fast purge complete!__\n**Purged** `" + str(count) + "` **messages.**",
     )
@@ -362,7 +356,7 @@ async def fastpurger(purg):
     await done.delete()
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="purgeme$",
 )
 async def fastpurgerme(purg):
@@ -371,19 +365,19 @@ async def fastpurgerme(purg):
     count = 0
     if not purg.reply_to_msg_id:
         return await eod(purg, "`Reply to a message to purge from.`", time=10)
-    async for msg in ultroid_bot.iter_messages(
+    async for msg in KINGBOT_bot.iter_messages(
         chat, from_user="me", min_id=purg.reply_to_msg_id
     ):
         msgs.append(msg)
         count = count + 1
         msgs.append(purg.reply_to_msg_id)
         if len(msgs) == 100:
-            await ultroid_bot.delete_messages(chat, msgs)
+            await KINGBOT_bot.delete_messages(chat, msgs)
             msgs = []
 
     if msgs:
-        await ultroid_bot.delete_messages(chat, msgs)
-    done = await ultroid_bot.send_message(
+        await KINGBOT_bot.delete_messages(chat, msgs)
+    done = await KINGBOT_bot.send_message(
         purg.chat_id,
         "__Fast purge complete!__\n**Purged** `" + str(count) + "` **messages.**",
     )
@@ -391,7 +385,7 @@ async def fastpurgerme(purg):
     await done.delete()
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="purgeall$",
 )
 async def _(e):
@@ -415,7 +409,7 @@ async def _(e):
         )
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="del$",
 )
 async def delete_it(delme):
@@ -432,16 +426,16 @@ async def delete_it(delme):
             )
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="edit",
 )
 async def editer(edit):
     message = edit.text
     chat = await edit.get_input_chat()
-    self_id = await ultroid_bot.get_peer_id("me")
+    self_id = await KINGBOT_bot.get_peer_id("me")
     string = str(message[6:])
     i = 1
-    async for message in ultroid_bot.iter_messages(chat, self_id):
+    async for message in KINGBOT_bot.iter_messages(chat, self_id):
         if i == 2:
             await message.edit(string)
             await edit.delete()
