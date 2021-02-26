@@ -1,12 +1,7 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+# KINGBOT - UserBot
 
 """
-✘ Commands Available -
+👉 Commands Available -
 
 • `{i}meaning <word>`
     Get the meaning of the word.
@@ -29,7 +24,7 @@ from . import *
 dictionary = PyDictionary()
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="meaning",
 )
 async def mean(event):
@@ -62,7 +57,7 @@ async def mean(event):
         await xx.edit(x)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="synonym",
 )
 async def mean(event):
@@ -94,7 +89,7 @@ async def mean(event):
         await xx.edit(f"No synonym found!!\n{str(e)}")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="antonym",
 )
 async def mean(event):
@@ -126,7 +121,7 @@ async def mean(event):
         await xx.edit(f"No antonym found!!\n{str(e)}")
 
 
-@ultroid_cmd(pattern="ud (.*)")
+@KINGBOT_cmd(pattern="ud (.*)")
 async def _(event):
     xx = await eor(event, "`Processing...`")
     word = event.pattern_match.group(1)
