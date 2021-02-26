@@ -1,12 +1,7 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}toon <reply to any media>`
     To make it toon.
@@ -51,7 +46,7 @@ from validators.url import url
 from . import *
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="sketch$",
 )
 async def sketch(e):
@@ -90,7 +85,7 @@ async def sketch(e):
     os.remove("ultroid.png")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="grey$",
 )
 async def ultd(event):
@@ -127,7 +122,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="blur$",
 )
 async def ultd(event):
@@ -153,7 +148,7 @@ async def ultd(event):
         cv2.imwrite("ult.png", lol)
         file = "ult.png"
     ult = cv2.imread(file)
-    ultroid = cv2.GaussianBlur(ult, (35, 35), 0)
+    KINGBOT = cv2.GaussianBlur(ult, (35, 35), 0)
     cv2.imwrite("ult.jpg", ultroid)
     await event.client.send_file(
         event.chat_id, "ult.jpg", force_document=False, reply_to=event.reply_to_msg_id
@@ -164,7 +159,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="negative$",
 )
 async def ultd(event):
@@ -191,7 +186,7 @@ async def ultd(event):
         cv2.imwrite("ult.png", lol)
         file = "ult.png"
     ult = cv2.imread(file)
-    ultroid = cv2.bitwise_not(ult)
+    KINGBOT = cv2.bitwise_not(ult)
     cv2.imwrite("ult.jpg", ultroid)
     await event.client.send_file(
         event.chat_id, "ult.jpg", force_document=False, reply_to=event.reply_to_msg_id
@@ -202,7 +197,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="mirror$",
 )
 async def ultd(event):
@@ -241,7 +236,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="flip$",
 )
 async def ultd(event):
@@ -281,7 +276,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="quad$",
 )
 async def ultd(event):
@@ -323,7 +318,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="toon$",
 )
 async def ultd(event):
@@ -367,7 +362,7 @@ async def ultd(event):
     )
     centers = np.uint8(centers)
     ish = centers[labels.flatten()]
-    ultroid = ish.reshape((ult.shape))
+    KINGBOT = ish.reshape((ult.shape))
     cv2.imwrite("ult.jpg", ultroid)
     await event.client.send_file(
         event.chat_id, "ult.jpg", force_document=False, reply_to=event.reply_to_msg_id
@@ -378,7 +373,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="danger$",
 )
 async def ultd(event):
@@ -406,7 +401,7 @@ async def ultd(event):
         file = "ult.png"
     ult = cv2.imread(file)
     dan = cv2.cvtColor(ult, cv2.COLOR_BGR2RGB)
-    ultroid = cv2.cvtColor(dan, cv2.COLOR_HSV2BGR)
+    KINGBOT = cv2.cvtColor(dan, cv2.COLOR_HSV2BGR)
     cv2.imwrite("ult.jpg", ultroid)
     await event.client.send_file(
         event.chat_id, "ult.jpg", force_document=False, reply_to=event.reply_to_msg_id
@@ -417,7 +412,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="blue$",
 )
 async def ultd(event):
