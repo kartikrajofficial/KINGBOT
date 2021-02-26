@@ -1,12 +1,7 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
-✘ Commands Available
+ Commands Available
 
 • `{i}alive`
     Check if your bot is working.
@@ -61,7 +56,7 @@ except BaseException:
     HEROKU_APP_NAME = None
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="alive$",
 )
 async def lol(ult):
@@ -69,24 +64,26 @@ async def lol(ult):
     uptime = grt((time.time() - start_time))
     header = udB.get("ALIVE_TEXT") if udB.get("ALIVE_TEXT") else "Hey,  I am alive."
     als = """
-**The Ultroid Userbot...**
+**The KINGBOT Userbot...**
 
 **{}**
 
-✵ **Owner** - `{}`
-✵ **Ultroid** - `{}`
-✵ **UpTime** - `{}`
-✵ **Python** - `{}`
-✵ **Telethon** - `{}`
-✵ **Branch** - `{}`
+👑 **PERU Owner** - `{}`
+👑 **KINGBOT** - `{}`
+🤓 **UpTime** - `{}`
+😎 **Python** - `{}`
+🎉 **Telethon** - `{}`
+➾ **Branch** - `{}`
+🎗 **A.I.** - `{}`
 """.format(
         header,
         OWNER_NAME,
-        ultroid_version,
-        uptime,
-        pyver(),
-        __version__,
-        Repo().active_branch,
+            KINGBOT_version,
+            uptime,
+            pyver(),
+            __version__,
+            Repo().active_branch,
+            __version__,
     )
     if pic is None:
         await ult.edit(als)
@@ -95,16 +92,16 @@ async def lol(ult):
         await ult.reply(als, file=pic)
     else:
         await ult.delete()
-        await ultroid_bot.send_message(ult.chat_id, file=pic)
-        await ultroid_bot.send_message(ult.chat_id, als)
+        await KINGBOT_bot.send_message(ult.chat_id, file=pic)
+        await KINGBOT_bot.send_message(ult.chat_id, als)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="ping$",
 )
 async def _(event):
     start = dt.now()
-    x = await eor(event, "`Pong !`")
+    x = await eor(event, "`Pongu Pong !`")
     if event.fwd_from:
         return
     end = dt.now()
@@ -113,21 +110,21 @@ async def _(event):
     await x.edit(f"**Pong !!** `{ms}ms`\n**Uptime** - `{uptime}`")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="cmds$",
 )
 async def cmds(event):
     await allcmds(event)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="restart$",
 )
 async def restartbt(ult):
     await restart(ult)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="logs$",
 )
 async def _(ult):
@@ -144,9 +141,9 @@ async def _(ult):
     url = f"https://del.dog/{r['key']}"
     await ult.client.send_file(
         ult.chat_id,
-        "logs-ultroid.txt",
+        "logs-KINGBOT.txt",
         reply_to=ult.id,
-        caption=f"**Heroku** Ultroid Logs.\nPasted [here]({url}) too!",
+        caption=f"**Heroku** KINGBOT Logs.\nPasted [here]({url}) too!",
     )
     await xx.edit("`Uploading...`")
     await asyncio.sleep(1)
@@ -154,7 +151,7 @@ async def _(ult):
     return os.remove("logs-ultroid.txt")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="usage$",
 )
 async def dyno_usage(dyno):
@@ -221,12 +218,12 @@ async def dyno_usage(dyno):
     )
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="shutdown$",
 )
 async def shht(event):
     await eor(event, "GoodBye {}.\n`Shutting down...`".format(OWNER_NAME))
-    await ultroid_bot.disconnect()
+    await KINGBOT_bot.disconnect()
 
 
 HELP.update({f"{__name__.split('.')[1]}": f"{__doc__.format(i=Var.HNDLR)}"})
