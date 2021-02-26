@@ -1,12 +1,6 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}kickme`
     Leaves the group in which it is used.
@@ -77,22 +71,22 @@ TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 
 # Telegraph Things
 telegraph = Telegraph()
-telegraph.create_account(short_name="Ultroid")
+telegraph.create_account(short_name="KINGBOT")
 # ================================================================#
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="kickme$",
     groups_only=True,
 )
 async def leave(ult):
-    x = ultroid_bot.me
+    x = KINGBOT_bot.me
     name = x.first_name
     await eor(ult, f"`{name} has left this group, bye!!.`")
-    await ultroid_bot(LeaveChannelRequest(ult.chat_id))
+    await KINGBOT_bot(LeaveChannelRequest(ult.chat_id))
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="date$",
 )
 async def date(event):
@@ -101,10 +95,10 @@ async def date(event):
     y = dt.now(k).year
     d = dt.now(k).strftime("Date - %B %d, %Y\nTime- %H:%M:%S")
     k = calendar.month(y, m)
-    ultroid = await eor(event, f"`{k}\n\n{d}`")
+    KINGBOT = await eor(event, f"`{k}\n\n{d}`")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="calc",
 )
 async def _(event):
@@ -153,7 +147,7 @@ async def aexec(code, event):
     return await locals()["__aexec"](event)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="chatinfo(?: |$)(.*)",
 )
 async def info(event):
@@ -170,11 +164,11 @@ async def info(event):
     return
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="listreserved$",
 )
 async def _(event):
-    result = await ultroid_bot(functions.channels.GetAdminedPublicChannelsRequest())
+    result = await KINGBOT_bot(functions.channels.GetAdminedPublicChannelsRequest())
     output_str = ""
     r = result.chats
     for channel_obj in r:
@@ -185,7 +179,7 @@ async def _(event):
         await eor(event, output_str)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="stats$",
 )
 async def stats(
@@ -204,7 +198,7 @@ async def stats(
     unread_mentions = 0
     unread = 0
     dialog: Dialog
-    async for dialog in ultroid_bot.iter_dialogs():
+    async for dialog in KINGBOT_bot.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, Channel):
             if entity.broadcast:
@@ -256,7 +250,7 @@ async def stats(
     await ok.edit(response)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="paste( (.*)|$)",
 )
 async def _(event):
@@ -306,14 +300,14 @@ async def _(event):
         )
     q = f"paste-{key}"
     try:
-        ok = await ultroid_bot.inline_query(Var.BOT_USERNAME, q)
+        ok = await KINGBOT_bot.inline_query(Var.BOT_USERNAME, q)
         await ok[0].click(event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True)
         await xx.delete()
     except BotInlineDisabledError or BotResponseTimeoutError:  # incase the bot doesnt respond
         await xx.edit(reply_text)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="hastebin ?(.*)",
 )
 async def _(event):
@@ -346,7 +340,7 @@ async def _(event):
     await xx.edit("**Pasted to Hastebin** : [Link]({})".format(url))
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="info ?(.*)",
 )
 async def _(event):
@@ -422,7 +416,7 @@ async def _(event):
     await xx.delete()
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="invite ?(.*)",
     groups_only=True,
 )
@@ -443,7 +437,7 @@ async def _(ult):
     else:
         for user_id in to_add_users.split(" "):
             try:
-                await ultroid_bot(
+                await KINGBOT_bot(
                     functions.channels.InviteToChannelRequest(
                         channel=ult.chat_id, users=[user_id]
                     )
@@ -453,7 +447,7 @@ async def _(ult):
                 await xx.edit(str(e))
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern=r"rmbg ?(.*)",
 )
 async def rmbg(event):
@@ -509,7 +503,7 @@ async def rmbg(event):
         )
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="telegraph ?(.*)",
 )
 async def telegraphcmd(event):
@@ -518,7 +512,7 @@ async def telegraphcmd(event):
     if event.reply_to_msg_id:
         getmsg = await event.get_reply_message()
         if getmsg.photo or getmsg.video or getmsg.gif:
-            getit = await ultroid_bot.download_media(getmsg)
+            getit = await KINGBOT_bot.download_media(getmsg)
             try:
                 variable = uf(getit)
                 os.remove(getit)
@@ -528,14 +522,14 @@ async def telegraphcmd(event):
                 amsg = f"Error - {e}"
             await xx.edit(amsg)
         elif getmsg.document:
-            getit = await ultroid_bot.download_media(getmsg)
+            getit = await KINGBOT_bot.download_media(getmsg)
             ab = open(getit, "r")
             cd = ab.read()
             ab.close()
             if input_str:
                 tcom = input_str
             else:
-                tcom = "Ultroid"
+                tcom = "KINGBOT"
             makeit = telegraph.create_page(title=tcom, content=[f"{cd}"])
             war = makeit["url"]
             os.remove(getit)
@@ -544,7 +538,7 @@ async def telegraphcmd(event):
             if input_str:
                 tcom = input_str
             else:
-                tcom = "Ultroid"
+                tcom = "KINGBOT"
             makeit = telegraph.create_page(title=tcom, content=[f"{getmsg.text}"])
             war = makeit["url"]
             await xx.edit(f"Pasted to Telegraph : [Telegraph]({war})")
@@ -554,7 +548,7 @@ async def telegraphcmd(event):
         await xx.edit("Reply to a Message !")
 
 
-@ultroid_cmd(pattern="json")
+@KINGBOT_cmd(pattern="json")
 async def _(event):
     the_real_message = None
     reply_to_id = None
@@ -568,7 +562,7 @@ async def _(event):
     if len(the_real_message) > 4096:
         with io.BytesIO(str.encode(the_real_message)) as out_file:
             out_file.name = "json-ult.txt"
-            await ultroid_bot.send_file(
+            await KINGBOT_bot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
