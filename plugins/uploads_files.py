@@ -1,12 +1,6 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}ul <path/to/file>`
     Upload file to telegram chat.
@@ -31,7 +25,7 @@ from . import *
 opn = []
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="dl ?(.*)",
 )
 async def download(event):
@@ -80,7 +74,7 @@ async def download(event):
     await eod(xx, f"Download Successful..\nTo\n`{o}`\nin `{t}`")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="ul ?(.*)",
 )
 async def download(event):
@@ -118,7 +112,7 @@ async def download(event):
     await eod(xx, f"Uploaded `{kk}` in `{t}`", time=5)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="save",
 )
 async def _(event):
@@ -141,7 +135,7 @@ async def _(event):
             os.remove(input_str)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="open$",
 )
 async def _(event):
