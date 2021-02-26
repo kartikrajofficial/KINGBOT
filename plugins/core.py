@@ -1,12 +1,7 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}install <reply to plugin>`
     To install the plugin,
@@ -65,7 +60,7 @@ async def inline_handler(event):
         await event.answer(plugs)
     else:
         try:
-            ultroid = builder.document(
+            KINGBOT = builder.document(
                 f"./plugins/{input_str}.py",
                 title=f"{input_str}.py",
                 description=f"Module {input_str} Found",
@@ -81,7 +76,7 @@ async def inline_handler(event):
             await event.answer([ultroid])
             return
         except BaseException:
-            ultroidcode = builder.article(
+            KINGBOTcode = builder.article(
                 title=f"Module {input_str}.py Not Found",
                 description=f"No Such Module",
                 text=f"No Module Named {input_str}.py",
@@ -97,14 +92,14 @@ async def inline_handler(event):
             return
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="install",
 )
 async def install(event):
     await safeinstall(event)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern=r"unload ?(.*)",
 )
 async def unload(event):
@@ -127,7 +122,7 @@ async def unload(event):
         return await eod(event, f"**Nᴏ Pʟᴜɢɪɴ Nᴀᴍᴇᴅ** `{shortname}`", time=3)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern=r"uninstall ?(.*)",
 )
 async def uninstall(event):
@@ -151,7 +146,7 @@ async def uninstall(event):
         return await eod(event, f"**Nᴏ Pʟᴜɢɪɴ Nᴀᴍᴇᴅ** `{shortname}`", time=3)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern=r"load ?(.*)",
 )
 async def load(event):
