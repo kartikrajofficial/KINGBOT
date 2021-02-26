@@ -1,12 +1,7 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}google <query>`
     For doing google search.
@@ -29,7 +24,7 @@ from search_engine_parser import *
 from . import *
 
 
-@ultroid_cmd(pattern="google ?(.*)")
+@KINGBOT_cmd(pattern="google ?(.*)")
 async def google(event):
     inp = event.pattern_match.group(1)
     if not inp:
@@ -48,7 +43,7 @@ async def google(event):
     )
 
 
-@ultroid_cmd(pattern="img ?(.*)")
+@KINGBOT_cmd(pattern="img ?(.*)")
 async def goimg(event):
     query = event.pattern_match.group(1)
     if not query:
@@ -75,7 +70,7 @@ async def goimg(event):
     await nn.delete()
 
 
-@ultroid_cmd(pattern="reverse")
+@KINGBOT_cmd(pattern="reverse")
 async def reverse(event):
     reply = await event.get_reply_message()
     if not reply:
