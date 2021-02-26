@@ -1,12 +1,7 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}bash <cmds>`
     Run linux commands on telegram.
@@ -54,7 +49,7 @@ from telethon.utils import pack_bot_file_id
 from . import *
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="tr",
 )
 async def _(event):
@@ -81,7 +76,7 @@ async def _(event):
         await eod(xx, str(exc), time=10)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="id$",
 )
 async def _(event):
@@ -107,7 +102,7 @@ async def _(event):
         await eor(event, "**Current Chat ID:**  `{}`".format(str(event.chat_id)))
 
 
-@ultroid_cmd(pattern="bots ?(.*)")
+@KINGBOT_cmd(pattern="bots ?(.*)")
 async def _(ult):
     await ult.edit("`...`")
     if ult.is_private:
@@ -145,7 +140,7 @@ async def _(ult):
     await eod(ult, mentions)
 
 
-@ultroid_cmd(pattern="hl")
+@KINGBOT_cmd(pattern="hl")
 async def _(ult):
     try:
         input = ult.text.split(" ", maxsplit=1)[1]
@@ -154,7 +149,7 @@ async def _(ult):
     await eod(ult, "[ㅤㅤㅤㅤㅤㅤㅤ](" + input + ")", link_preview=False)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="circle$",
 )
 async def _(e):
@@ -242,7 +237,7 @@ async def _(e):
         return await eor(e, "**Reply to a gif or audio file only**")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="bash",
 )
 async def _(event):
@@ -293,7 +288,7 @@ async def _(event):
         await eod(xx, OUT)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="eval",
 )
 async def _(event):
@@ -366,7 +361,7 @@ async def aexec(code, event):
     return await locals()["__aexec"](e, e.client)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="sg(?: |$)(.*)",
 )
 async def lastname(steal):
@@ -384,7 +379,7 @@ async def lastname(steal):
         return
     lol = await eor(steal, "Processingg !!!!!")
     try:
-        async with ultroid_bot.conversation(chat) as conv:
+        async with KINGBOT_bot.conversation(chat) as conv:
             try:
                 msg = await conv.send_message(id)
                 response = await conv.get_response()
