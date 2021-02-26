@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -23,7 +17,7 @@ import os
 from . import *
 
 
-@ultroid_cmd(pattern="superfban ?(.*)")
+@KINGBOT_cmd(pattern="superfban ?(.*)")
 async def _(event):
     msg = await eor(event, "Starting a Mass-FedBan...")
     fedList = []
@@ -75,7 +69,7 @@ async def _(event):
             return
         elif FBAN.startswith("@"):
             try:
-                x = await ultroid_bot(GetFullUserRequest(FBAN))
+                x = await KINGBOT_bot(GetFullUserRequest(FBAN))
                 uid = x.user.id
                 if str(uid) in DEVLIST:
                     await msg.edit("You can't ban my dev you noob!!")
@@ -92,7 +86,7 @@ async def _(event):
         chat = await event.get_chat()
     if not len(fedList):
         for a in range(3):
-            async with ultroid_bot.conversation("@MissRose_bot") as bot_conv:
+            async with KINGBOT_bot.conversation("@MissRose_bot") as bot_conv:
                 await bot_conv.send_message("/start")
                 await asyncio.sleep(3)
                 await bot_conv.send_message("/myfeds")
@@ -151,7 +145,7 @@ async def _(event):
             return
     await msg.edit(f"FBaning in {len(fedList)} feds.")
     try:
-        await ultroid_bot.send_message(chat, f"/start")
+        await KINGBOT_bot.send_message(chat, f"/start")
     except BaseException:
         await msg.edit("Specified FBan Group ID is incorrect.")
         return
@@ -166,9 +160,9 @@ async def _(event):
             await ultroid_bot.send_message(chat, f"{fed} Excluded.")
             exCount += 1
             continue
-        await ultroid_bot.send_message(chat, f"/joinfed {fed}")
+        await KINGBOT_bot.send_message(chat, f"/joinfed {fed}")
         await asyncio.sleep(3)
-        await ultroid_bot.send_message(chat, f"/fban {FBAN} {REASON}")
+        await KINGBOT_bot.send_message(chat, f"/fban {FBAN} {REASON}")
         await asyncio.sleep(3)
     try:
         os.remove("fedlist")
@@ -179,14 +173,14 @@ async def _(event):
     )
 
 
-@ultroid_cmd(pattern="superunfban ?(.*)")
+@KINGBOT_cmd(pattern="superunfban ?(.*)")
 async def _(event):
     msg = await eor(event, "Starting a Mass-UnFedBan...")
     fedList = []
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         if previous_message.media:
-            downloaded_file_name = await ultroid_bot.download_media(
+            downloaded_file_name = await KINGBOT_bot.download_media(
                 previous_message, "fedlist"
             )
             file = open(downloaded_file_name, encoding="utf8")
@@ -238,7 +232,7 @@ async def _(event):
         chat = await event.get_chat()
     if not len(fedList):
         for a in range(3):
-            async with ultroid_bot.conversation("@MissRose_bot") as bot_conv:
+            async with KINGBOT_bot.conversation("@MissRose_bot") as bot_conv:
                 await bot_conv.send_message("/start")
                 await asyncio.sleep(3)
                 await bot_conv.send_message("/myfeds")
@@ -256,7 +250,7 @@ async def _(event):
                     fedfile = await bot_conv.get_response()
                     await asyncio.sleep(3)
                     if fedfile.media:
-                        downloaded_file_name = await ultroid_bot.download_media(
+                        downloaded_file_name = await KINGBOT_bot.download_media(
                             fedfile, "fedlist"
                         )
                         await asyncio.sleep(6)
@@ -297,7 +291,7 @@ async def _(event):
             return
     await msg.edit(f"UnFBaning in {len(fedList)} feds.")
     try:
-        await ultroid_bot.send_message(chat, f"/start")
+        await KINGBOT_bot.send_message(chat, f"/start")
     except BaseException:
         await msg.edit("Specified FBan Group ID is incorrect.")
         return
@@ -309,12 +303,12 @@ async def _(event):
     exCount = 0
     for fed in fedList:
         if udB.get("EXCLUDE_FED") and fed in excludeFed:
-            await ultroid_bot.send_message(chat, f"{fed} Excluded.")
+            await KINGBOT_bot.send_message(chat, f"{fed} Excluded.")
             exCount += 1
             continue
-        await ultroid_bot.send_message(chat, f"/joinfed {fed}")
+        await KINGBOT_bot.send_message(chat, f"/joinfed {fed}")
         await asyncio.sleep(3)
-        await ultroid_bot.send_message(chat, f"/unfban {FBAN} {REASON}")
+        await KINGBOT_bot.send_message(chat, f"/unfban {FBAN} {REASON}")
         await asyncio.sleep(3)
     try:
         os.remove("fedlist")
