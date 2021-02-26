@@ -4,7 +4,7 @@ import os
 import re
 import time
 
-from pyUltroid.functions.all import *
+from pyKINGBOT.functions.all import *
 from telethon import Button
 from telethon.tl.types import DocumentAttributeAudio
 from telethon.tl.types import InputWebDocument as wb
