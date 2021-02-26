@@ -1,12 +1,9 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
+# KINGBOT - UserBot
+# Copyright (C) 2020 KINGBOT
 #
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
+# T
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}github <username>`
     Get full information of the users github profile.
@@ -18,7 +15,7 @@ import requests
 from . import *
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="github (.*)",
 )
 async def gitsearch(event):
@@ -59,7 +56,7 @@ async def gitsearch(event):
 **Following** - {ufollowing}
 """
     await xx.delete()
-    await ultroid_bot.send_file(
+    await KINGBOT_bot.send_file(
         event.chat_id,
         upic,
         caption=fullusr,
