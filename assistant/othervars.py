@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 from . import *
 
@@ -14,7 +8,7 @@ from . import *
 @owner
 async def otvaar(event):
     await event.edit(
-        "Other Variables to set for @TheUltroid:",
+        "Other Variables to set for @KINGBOTOFFICIAL:",
         buttons=[
             [Button.inline("Tag Logger", data="taglog")],
             [Button.inline("PM Permit", data="pmset")],
