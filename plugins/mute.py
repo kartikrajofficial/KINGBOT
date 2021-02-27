@@ -1,12 +1,7 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+# KINGBOT - UserBot
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}mute <reply to msg/ user id>`
     Mute user in current chat.
@@ -28,8 +23,8 @@
 """
 
 
-from pyUltroid.functions.all import ban_time
-from pyUltroid.functions.mute_db import is_muted, mute, unmute
+from pyKINGBOT.functions.all import ban_time
+from pyKINGBOT.functions.mute_db import is_muted, mute, unmute
 from telethon import events
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
@@ -37,13 +32,13 @@ from telethon.tl.types import ChatBannedRights
 from . import *
 
 
-@ultroid_bot.on(events.NewMessage(incoming=True))
+@KINGBOT_bot.on(events.NewMessage(incoming=True))
 async def watcher(event):
     if is_muted(f"{event.sender_id}_{event.chat_id}"):
         await event.delete()
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="dmute ?(.*)",
 )
 async def startmute(event):
@@ -81,7 +76,7 @@ async def startmute(event):
         await eod(xx, "Error: " + f"`{str(e)}`")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="undmute ?(.*)",
 )
 async def endmute(event):
@@ -108,7 +103,7 @@ async def endmute(event):
         await eod(xx, "Error: " + f"`{str(e)}`")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="tmute",
     groups_only=True,
 )
@@ -150,7 +145,7 @@ async def _(e):
         await eod(xx, f"`{str(m)}`")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="unmute ?(.*)",
     groups_only=True,
 )
@@ -181,7 +176,7 @@ async def _(e):
         await eod(xx, f"`{str(m)}`")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="mute ?(.*)",
     groups_only=True,
 )
@@ -197,7 +192,7 @@ async def _(e):
         name = (await e.client.get_entity(input)).first_name
     else:
         return await eod(xx, "`Reply to someone or use its id...`", time=3)
-    if userid == ultroid_bot.uid:
+    if userid == KINGBOT_bot.uid:
         return await eod(xx, "`I can't mute myself.`", time=3)
     try:
         await e.client(
