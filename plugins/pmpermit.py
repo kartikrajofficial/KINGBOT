@@ -1,12 +1,8 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+# KINGBOT - UserBot
+
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}a` or `{i}approve`
     To Approve Someone In PM.
@@ -21,7 +17,7 @@
     To Unblock Someone in PM.
 """
 
-from pyUltroid.functions.pmpermit_db import *
+from pyKINGBOT.functions.pmpermit_db import *
 from telethon import events
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.functions.messages import ReportSpamRequest
@@ -34,7 +30,7 @@ LASTMSG = {}
 if Redis("PMPIC"):
     PMPIC = Redis("PMPIC")
 else:
-    PMPIC = "https://telegra.ph/file/94f6a4aeb21ce2d58dd41.jpg"
+    PMPIC = "https://telegra.ph/file/a47953a5ee354aff8b5ab.jpg"
 if not Redis("PM_TEXT"):
     UNAPPROVED_MSG = """
 **PMSecurity of {}!**
@@ -75,7 +71,7 @@ if sett is None:
     sett = True
 if sett == "True" and sett != "False":
 
-    @ultroid_bot.on(events.NewMessage(outgoing=True, func=lambda e: e.is_private))
+    @KINGBOT_bot.on(events.NewMessage(outgoing=True, func=lambda e: e.is_private))
     async def autoappr(e):
         miss = await e.get_chat()
         if miss.bot or miss.is_self:
@@ -97,7 +93,7 @@ if sett == "True" and sett != "False":
                     f"#AutoApproved\nUser - [{name0}](tg://user?id={e.chat_id})",
                 )
 
-    @ultroid_bot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
+    @KINGBOT_bot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
     async def permitpm(event):
         user = await event.get_chat()
         if user.bot or user.is_self:
@@ -170,7 +166,7 @@ if sett == "True" and sett != "False":
                         f"[{name0}](tg://user?id={user.id}) was blocked for spamming.",
                     )
 
-    @ultroid_cmd(pattern="(a|approve)(?: |$)")
+    @KINGBOT_cmd(pattern="(a|approve)(?: |$)")
     async def approvepm(apprvpm):
         if apprvpm.reply_to_msg_id:
             reply = await apprvpm.get_reply_message()
@@ -218,7 +214,7 @@ if sett == "True" and sett != "False":
         else:
             await apprvpm.edit(NO_REPLY)
 
-    @ultroid_cmd(pattern="(da|disapprove)(?: |$)")
+    @KINGBOT_cmd(pattern="(da|disapprove)(?: |$)")
     async def disapprovepm(e):
         if e.reply_to_msg_id:
             reply = await e.get_reply_message()
@@ -259,7 +255,7 @@ if sett == "True" and sett != "False":
         else:
             await e.edit(NO_REPLY)
 
-    @ultroid_cmd(pattern="block$")
+    @KINGBOT_cmd(pattern="block$")
     async def blockpm(block):
         if block.reply_to_msg_id:
             reply = await block.get_reply_message()
@@ -287,14 +283,14 @@ if sett == "True" and sett != "False":
                 Var.LOG_CHANNEL, f"#BLOCKED\nUser: [{name0}](tg://user?id={uid})"
             )
 
-    @ultroid_cmd(pattern="unblock$")
+    @KINGBOT_cmd(pattern="unblock$")
     async def unblockpm(unblock):
         if unblock.reply_to_msg_id:
             reply = await unblock.get_reply_message()
             replied_user = await unblock.client.get_entity(reply.sender_id)
             name0 = str(replied_user.first_name)
             await unblock.client(UnblockRequest(replied_user.id))
-            await unblock.edit("`You have been unblocked.`")
+            await unblock.edit("`You have been unblocked successfully!!.`")
         else:
             await unblock.edit(NO_REPLY)
         if Var.LOG_CHANNEL:
