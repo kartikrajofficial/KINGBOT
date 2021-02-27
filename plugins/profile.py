@@ -1,12 +1,7 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+# KINGBOT - UserBot
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}setname <first name // last name>`
     Change your profile name.
@@ -38,14 +33,14 @@ TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 # bio changer
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="setbio ?(.*)",
 )
 async def _(ult):
     ok = await eor(ult, "...")
     set = ult.pattern_match.group(1)
     try:
-        await ultroid_bot(functions.account.UpdateProfileRequest(about=set))
+        await KINGBOT_bot(functions.account.UpdateProfileRequest(about=set))
         await ok.edit("Profile bio changed to\n`{}`".format(set))
     except Exception as ex:
         await ok.edit("Error occured.\n`{}`".format(str(ex)))
@@ -56,7 +51,7 @@ async def _(ult):
 # name changer
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="setname ?((.|//)*)",
 )
 async def _(ult):
@@ -67,7 +62,7 @@ async def _(ult):
     if "//" in names:
         first_name, last_name = names.split("//", 1)
     try:
-        await ultroid_bot(
+        await KINGBOT_bot(
             functions.account.UpdateProfileRequest(
                 first_name=first_name, last_name=last_name
             )
@@ -82,7 +77,7 @@ async def _(ult):
 # profile pic
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="setpic$",
 )
 async def _(ult):
@@ -93,15 +88,15 @@ async def _(ult):
         os.makedirs(TMP_DOWNLOAD_DIRECTORY)
     photo = None
     try:
-        photo = await ultroid_bot.download_media(reply_message, TMP_DOWNLOAD_DIRECTORY)
+        photo = await KINGBOT_bot.download_media(reply_message, TMP_DOWNLOAD_DIRECTORY)
     except Exception as ex:
         await ok.edit("Error occured.\n`{}`".format(str(ex)))
     else:
         if photo:
             await ok.edit("`Uploading it to my profile...`")
-            file = await ultroid_bot.upload_file(photo)
+            file = await KINGBOT_bot.upload_file(photo)
             try:
-                await ultroid_bot(functions.photos.UploadProfilePhotoRequest(file))
+                await KINGBOT_bot(functions.photos.UploadProfilePhotoRequest(file))
             except Exception as ex:
                 await ok.edit("Error occured.\n`{}`".format(str(ex)))
             else:
@@ -117,7 +112,7 @@ async def _(ult):
 # delete profile pic(s)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="delpfp ?(.*)",
 )
 async def remove_profilepic(delpfp):
@@ -129,7 +124,7 @@ async def remove_profilepic(delpfp):
         lim = int(group)
     else:
         lim = 1
-    pfplist = await ultroid_bot(
+    pfplist = await KINGBOT_bot(
         GetUserPhotosRequest(user_id=delpfp.from_id, offset=0, max_id=0, limit=lim)
     )
     input_photos = []
@@ -141,20 +136,20 @@ async def remove_profilepic(delpfp):
                 file_reference=sep.file_reference,
             )
         )
-    await ultroid_bot(DeletePhotosRequest(id=input_photos))
+    await KINGBOT_bot(DeletePhotosRequest(id=input_photos))
     await ok.edit(f"`Successfully deleted {len(input_photos)} profile picture(s).`")
     await asyncio.sleep(10)
     await ok.delete()
 
 
-@ultroid_cmd(pattern="gpoto ?(.*)")
+@KINGBOT_cmd(pattern="gpoto ?(.*)")
 async def gpoto(e):
     ult = e.pattern_match.group(1)
     try:
-        okla = await ultroid_bot.download_profile_photo(
+        okla = await KINGBOT_bot.download_profile_photo(
             ult, "profile.jpg", download_big=True
         )
-        await ultroid_bot.send_message(e.chat_id, file=okla)
+        await KINGBOT_bot.send_message(e.chat_id, file=okla)
         os.remove(okla)
     except Exception as e:
         await eor(e, f"ERROR - {str(e)}")
