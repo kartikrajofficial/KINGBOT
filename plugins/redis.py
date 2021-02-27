@@ -1,12 +1,8 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+# KINGBOT - UserBot
+
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}setredis key | value`
     Redis Set Value.
@@ -32,7 +28,7 @@ import re
 from . import *
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="setredis ?(.*)",
 )
 async def _(ult):
@@ -51,7 +47,7 @@ async def _(ult):
         await ok.edit("`Something Went Wrong`")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="getredis ?(.*)",
 )
 async def _(ult):
@@ -66,7 +62,7 @@ async def _(ult):
         await ok.edit("`Something Went Wrong`")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="delredis ?(.*)",
 )
 async def _(ult):
@@ -79,7 +75,7 @@ async def _(ult):
         await ok.edit("`Something Went Wrong`")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="renredis ?(.*)",
 )
 async def _(ult):
@@ -100,7 +96,7 @@ async def _(ult):
         await ok.edit("Key not found")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="getkeys$",
 )
 async def _(ult):
