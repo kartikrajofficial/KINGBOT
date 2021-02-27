@@ -1,12 +1,8 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+# KINGBOT - UserBot
+
 
 """
-✘ Commands Available -
+ Commands Available -
 
 • `{i}pdf <page num> <reply to pdf file>`
     Extract nd Send page as a Image.(note-: For Extraction all pages just use .pdf)
@@ -41,7 +37,7 @@ if not os.path.exists("pdf/"):
     os.makedirs("pdf/")
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="pdf ?(.*)",
 )
 async def pdfseimg(event):
@@ -89,7 +85,7 @@ async def pdfseimg(event):
         await xx.delete()
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="pdtext ?(.*)",
 )
 async def pdfsetxt(event):
@@ -148,7 +144,7 @@ async def pdfsetxt(event):
     await xx.delete()
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="pdscan ?(.*)",
 )
 async def imgscan(event):
@@ -202,7 +198,7 @@ async def imgscan(event):
     os.remove(scann)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="pdsave ?(.*)",
 )
 async def savepdf(event):
@@ -256,7 +252,7 @@ async def savepdf(event):
         os.remove("o.png")
     elif ultt.endswith(".pdf"):
         a = dani_ck("pdf/scan.pdf")
-        await ultroid_bot.download_media(ok, a)
+        await KINGBOT_bot.download_media(ok, a)
         await eor(
             event,
             f"Done, Now Reply Another Image/pdf if completed then use {hndlr}pdsend to merge nd send all as pdf",
@@ -266,7 +262,7 @@ async def savepdf(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
+@KINGBOT_cmd(
     pattern="pdsend ?(.*)",
 )
 async def sendpdf(event):
