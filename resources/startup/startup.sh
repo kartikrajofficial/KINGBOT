@@ -1,19 +1,16 @@
 #!/bin/bash
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
- 
+# KINGBOT - UserBot
 echo "
  
-        +-+ +-+ +-+ +-+ +-+ +-+ +-+
-        |U| |L| |T| |R| |O| |I| |D|
-        +-+ +-+ +-+ +-+ +-+ +-+ +-+
+         _  _____ _   _  ____ ____   ___ _____ 
+| |/ |_ _| \ | |/ ___| __ ) / _ |_   _|
+| ' / | ||  \| | |  _|  _ \| | | || |  
+| . \ | || |\  | |_| | |_) | |_| || |  
+|_|\_|___|_| \_|\____|____/ \___/ |_|  
+                  
  
- 
-      Visit @TheUltroid for updates!!
+      Visit @KINGBOTOFFICIAL for updates!!
 
 "
  
-python3 -m pyUltroid
+python3 -m pyKINGBOT
