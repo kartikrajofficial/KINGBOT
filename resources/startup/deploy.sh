@@ -1,15 +1,12 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+# KINGBOT - UserBot
 
 echo "
-	      ╔╦╦╦══╦═╦═╦══╦══╗
-	      ║║║╠╗╔╣╬║║╠║║╩╗╗║
-	      ║║║╚╣║║╗╣║╠║║╦╩╝║
-	      ╚═╩═╩╝╚╩╩═╩══╩══╝
+	       _  _____ _   _  ____ ____   ___ _____ 
+| |/ |_ _| \ | |/ ___| __ ) / _ |_   _|
+| ' / | ||  \| | |  _|  _ \| | | || |  
+| . \ | || |\  | |_| | |_) | |_| || |  
+|_|\_|___|_| \_|\____|____/ \___/ |_|  
+                  
 
 	    °•° Deployment Begins •°•
 "
@@ -67,23 +64,25 @@ echo '
         •• Cloning Repository
 '
 
-git clone https://github.com/Teamultroid/Ultroid.git /root/TeamUltroid/
+git clone https://github.com/Kartikrajofficial/KINGBOT.git /root/Kartikrajofficial/
 
 echo '
 	•• Getting Libraries and Installing
 '
 pip install --upgrade pip setuptools wheel
 pip install search-engine-parser==0.6.2
-pip install -r /root/TeamUltroid/requirements.txt
+pip install -r /root/kartikrajofficial/requirements.txt
 
 echo "
 
-			      ┏┳┓╋┏┓╋╋╋╋┏┓┏┓
-			      ┃┃┣┓┃┗┳┳┳━╋╋┛┃
-			      ┃┃┃┗┫┏┫┏┫╋┃┃╋┃
-			      ┗━┻━┻━┻┛┗━┻┻━┛
+			       _  _____ _   _  ____ ____   ___ _____ 
+| |/ |_ _| \ | |/ ___| __ ) / _ |_   _|
+| ' / | ||  \| | |  _|  _ \| | | || |  
+| . \ | || |\  | |_| | |_) | |_| || |  
+|_|\_|___|_| \_|\____|____/ \___/ |_|  
+                  
 
 			•°• Deployed Successfully °•°
 		   •• Wait till python images are pushed
-	   •• Give build logs in @UltroidSupport if build fails
+	   •• Give build logs in @KINGBOTOFFICIALCHAT if build fails
 "
