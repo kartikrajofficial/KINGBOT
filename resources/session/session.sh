@@ -1,18 +1,13 @@
 # !/bin/bash
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+# KINGBOT - UserBot
 
 clear
 echo -e "\e[1m"
-echo "  _    _ _ _             _     _ "
-echo " | |  | | | |           (_)   | |"
-echo " | |  | | | |_ _ __ ___  _  __| |"
-echo " | |  | | | __| '__/ _ \| |/ _  |"
-echo " | |__| | | |_| | | (_) | | (_| |"
-echo "  \____/|_|\__|_|  \___/|_|\__,_|"
+echo "  _  _____ _   _  ____ ____   ___ _____ "
+echo "| |/ |_ _| \ | |/ ___| __ ) / _ |_   _| "
+echo "| ' / | ||  \| | |  _|  _ \| | | || |   "
+echo "| . \ | || |\  | |_| | |_) | |_| || |   "
+echo "|_|\_|___|_| \_|\____|____/ \___/ |_|   "
 echo -e "\e[0m"
 sec=5
 spinner=(⣻ ⢿ ⡿ ⣟ ⣯ ⣷)
@@ -26,7 +21,7 @@ apt-get update
 apt-get upgrade -y
 pkg upgrade -y
 pkg install python wget -y
-wget https://raw.githubusercontent.com/TeamUltroid/ultroid/main/resources/session/ssgen.py
+wget https://raw.githubusercontent.com/Kartikrajofficial/KINGBOT/master/resources/session/ssgen.py
 pip install telethon
 clear
 python3 ssgen.py
