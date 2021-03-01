@@ -1,19 +1,19 @@
 {
-    "name": "Ultroid UserBot",
+    "name": "KINGBOT UserBot",
     "description": "Pluggable telegram userbot, made in python using Telethon.",
-    "logo": "https://telegra.ph/file/1518e15421d21c5afd9af.jpg",
+    "logo": "https://telegra.ph/file/a47953a5ee354aff8b5ab.jpg",
     "keywords": ["Telethon", "telegram", "userbot", "python"],
-    "repository": "https://github.com/TeamUltroid/Ultroid",
-    "website": "https://ultroid.netlify.app/",
-    "success_url": "https://t.me/TheUltroid",
+    "repository": "https://github.com/Kartikrajofficial/KINGBOT",
+    "website": "https://github.com/Kartikrajofficial/KINGBOT",
+    "success_url": "https://t.me/KINGBOTOFFICIAL",
     "stack": "container",
     "env": {
         "API_ID": {
-            "description": "You api id, from my.telegram.org or @ScrapperRoBot.",
+            "description": "You api id, from my.telegram.org .",
             "value": ""
         },
         "API_HASH": {
-            "description": "You api hash, from my.telegram.org or @ScrapperRoBot.",
+            "description": "You api hash, from my.telegram.org .",
             "value": ""
         },
         "BOT_USERNAME": {
