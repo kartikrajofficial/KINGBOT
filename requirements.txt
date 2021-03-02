@@ -1,4 +1,4 @@
-py-KINGBOT==
+py-KINGBOT
 asyncurban
 carbonnow
 cairosvg
