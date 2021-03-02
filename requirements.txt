@@ -1,4 +1,4 @@
-pyKINGBOT==2021.2.24
+py-KINGBOT==2021.0.1
 asyncurban
 carbonnow
 cairosvg
