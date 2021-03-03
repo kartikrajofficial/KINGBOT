@@ -23,3 +23,26 @@ This is a userbot of Telegram which is based on telethon API.
 ## Deploy to Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+
+
+
+
+## Deploy Locally
+- Get your `API_ID` and `API_HASH` from [here](https://my.telegram.org/)
+- Get your `REDIS_URI` and `REDIS_PASSWORD` from [here](https://redislabs.com), tutorial [here](./resources/extras/redistut.md).
+- Clone the repository: <br />
+`git clone https://github.com/kartikrajofficial/KINGBOT.git`
+- Go to the cloned folder: <br />
+`cd Ultroid`
+- Create a virtual env:   <br />
+`virtualenv -p /usr/bin/python3 venv`   
+`. ./venv/bin/activate`
+- Install the requirements:   <br />
+`pip install -r requirements.txt`   
+- Generate your `SESSION`:   
+`bash sessiongen`
+- Fill your details in a `.env` file, as given in [`.env.sample`](https://github.com/TeamUltroid/Ultroid/blob/main/.env.sample).    
+(You can either edit and rename the file or make a new file.)
+- Run the bot:   
+`bash resources/startup/startup.sh`
