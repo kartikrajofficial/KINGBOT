@@ -28,6 +28,7 @@ This is a userbot of Telegram which is based on telethon API.
 
 
 
+
 ## Deploy Locally
 - Get your `API_ID` and `API_HASH` from [here](https://my.telegram.org/)
 - Get your `REDIS_URI` and `REDIS_PASSWORD` from [here](https://redislabs.com), tutorial [here](./resources/extras/redistut.md).
@@ -46,3 +47,8 @@ This is a userbot of Telegram which is based on telethon API.
 (You can either edit and rename the file or make a new file.)
 - Run the bot:   
 `bash resources/startup/startup.sh`
+
+
+# Credits
+
+After completing this ub all of u get
