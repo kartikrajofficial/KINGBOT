@@ -1,1 +1,1 @@
-python3 -m pyKINGBOT 
+python3 -m pip install
