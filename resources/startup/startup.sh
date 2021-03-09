@@ -1,1 +1,1 @@
-python3 -m pypip
+python3 -m pyKINGBOT
